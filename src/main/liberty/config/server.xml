@@ -1,0 +1,32 @@
+<server description="Intro REST Guide Liberty server">
+	<!-- tag::featureManager[] -->
+	<featureManager>
+		<feature>jaxrs-2.1</feature>
+		<feature>jdbc-4.3</feature>
+		<feature>cdi-2.0</feature>
+	</featureManager>
+	<!-- end::featureManager[] -->
+
+	<library id="mysql-library">
+		<file
+			name="C:\Users\JasonBourne\.m2\repository\mysql\mysql-connector-java\8.0.21\mysql-connector-java-8.0.21.jar" />
+	</library>
+
+	<dataSource id="defaultDataSource" jndiName="jdbc/mysql">
+		<jdbcDriver libraryRef="mysql-library" />
+		<properties.oracle
+			serverName="" portNumber="3306"
+			serviceName=""
+			databaseName="" user="root" password="root" />
+	</dataSource>
+
+	<!-- tag::httpEndpoint[] -->
+	<httpEndpoint httpPort="${default.http.port}"
+		httpsPort="${default.https.port}" id="defaultHttpEndpoint" host="*" />
+	<!-- end::httpEndpoint[] -->
+
+	<!-- tag::webApplication[] -->
+	<webApplication location="guide-rest-intro.war"
+		contextRoot="${app.context.root}" />
+	<!-- end::webApplication[] -->
+</server>
